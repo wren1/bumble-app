@@ -1,1 +1,12 @@
-/* TODO Add site wide styles */
+html, body {
+    height: 100%;
+}
+
+html {
+    background-color: #1d1d1d;
+}
+
+#root {
+    background-color: #1d1d1d;
+    height: 100%
+}

@@ -3,33 +3,44 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     email: {
       allowNull: false,
-      type: DataTypes.STRING,
-      validates: {
-        isEmail: true,
-        len: [3, 255],
-      }
+      unique: true,
+      type: DataTypes.STRING(50)
+    },
+    password: {
+      allowNull: false,
+      type: DataTypes.STRING.BINARY
     },
     username: {
       allowNull: false,
-      type: DataTypes.STRING,
-      validates: {
-        len: [1, 255],
-      },
+      unique: true,
+      type: DataTypes.STRING(30)
     },
-    hashedPassword: {
-      allowNull: false,
-      type: DataTypes.STRING.BINARY,
-      validates: {
-        len: [60, 60],
-      },
+    profilePic: {
+      type: DataTypes.STRING(255)
     },
-    tokenId: {
-      type: DataTypes.STRING
+    banner: {
+      type: DataTypes.STRING(255)
+    },
+    aboutTitle: {
+      type: DataTypes.STRING(50)
+    },
+    aboutContent: {
+      type: DataTypes.STRING(255)
     }
   }, {});
-
   User.associate = function(models) {
-  };
+    User.hasMany(models.Like, { foreignKey: 'userId' });
+    User.hasMany(models.Follow, { foreignKey: 'followerId' });
+    User.hasMany(models.Follow, { foreignKey: 'followerId' });
+    User.hasMany(models.Comment, { foreignKey: 'userId' });
+    User.hasMany(models.Post, { foreignKey: 'userId' });
 
+    const columnMapping = {
+      through: 'Reblog',
+      otherKey: 'postId',
+      foreignKey: 'userId'
+    }
+    User.belongsToMany(models.Post, columnMapping)
+  };
   return User;
 };
