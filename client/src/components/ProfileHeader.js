@@ -10,7 +10,7 @@ import ProfileInfoBlock from './ProfileInfoBlock';
 
 const useStyles = makeStyles((theme) => ({
     profilePage__header: {
-        width: '100%',
+        width: '100vw',
         minHeight: '100px',
         backgroundColor: 'black',
         display: 'flex',
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '100px',
         position: 'relative',
         zIndex: '9',
-        top: '10px',
+        top: '0px',
         padding: '20px'
     }
 }));

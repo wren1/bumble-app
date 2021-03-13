@@ -28,9 +28,20 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#1d1d1d',
         // marginBottom: '100px'
     }
+    // userProfile__main: {
+    //     width: '100%',
+    //     height: '100%',
+    //     display: 'flex',
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    //     flexDirection: 'column',
+    //     padding: 'none',
+    //     backgroundColor: '#1d1d1d',
+    // }
 }));
 
 const ProfilePage = () => {
+    const [loaded, setLoaded] = useState(false)
     const { userId } = useParams();
     const dispatch = useDispatch();
     const currentUserId = window.localStorage.getItem(USER_KEY)
@@ -53,10 +64,11 @@ const ProfilePage = () => {
         (async () => {
             await dispatch(getUser(currentUserId))
             await dispatch(getUserPosts(userId))
+            setLoaded(true)
         })();
     }, [userId])
     
-    if (!user || !currentUser) return null;
+    if (!user || !currentUser || !loaded) return null;
 
     return (
         <Container className={classes.userProfile__main}>

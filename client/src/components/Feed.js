@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Feed = ({ userId, posts, currentUser }) => {
+    const [loaded, setLoaded] = useState(false)
     const loggedIn = useSelector(state => !!state.authentication.token);
     const query = useSelector(state => state.current.search)
     // const likes = useSelector(state => state.likes);
@@ -43,7 +44,15 @@ const Feed = ({ userId, posts, currentUser }) => {
     // }, [])
     let likes;
 
-    if (posts.length <= 0 || !posts || !currentUser) return null; 
+    useEffect(() => {
+        (async () => {
+            setLoaded(true)
+        })()
+    })
+
+    if (posts.length <= 0 || !posts || !currentUser || !loaded) return null; 
+
+    console.log('after check in feed: ', posts)
 
     return (
         <Container className={classes.feed}>
