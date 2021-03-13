@@ -16,11 +16,25 @@ import ProtectedRoute from './util/route';
 
 
 const App = ({ needLogin, loadToken }) => {
+  const authenticated = useSelector(state => !!state.authentication.token)
   const [loaded, setLoaded] = useState(false);
 
+  // useEffect(() => {
+  //   loadToken()
+  // }, []);
+
   useEffect(() => {
-    loadToken()
+    (async() => {
+      await loadToken();
+      setLoaded(true);
+    })();
   }, []);
+
+  if (!loaded) {
+    return null;
+  }
+
+
 
   return (
     <CssBaseline>
@@ -34,7 +48,7 @@ const App = ({ needLogin, loadToken }) => {
             <Route path='/search/:query' component={SearchPage} />
             <Route path='/search' component={SearchPage} />
             <Route exact path='/tags/:tag' component={TagsPage} />
-            <ProtectedRoute exact={true} path='/' >
+            <ProtectedRoute exact={true} path='/' authenticated={authenticated} >
               <Home />
             </ProtectedRoute>
           </Switch>

@@ -11,7 +11,7 @@ const routes = require('./routes');
 // const cors = require('cors');
 // const { ValidationError } = require('sequelize');
 
-const indexRouter = require('./routes/index');
+// const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const postsRouter = require('./routes/api/posts');
 // const { environment } = require('./config');
@@ -40,7 +40,7 @@ app.use(helmet({ hsts: false }));
 
 
 // app.use(routes);
-app.use(indexRouter);
+// app.use(indexRouter);
 app.use(usersRouter);
 app.use(postsRouter);
 
