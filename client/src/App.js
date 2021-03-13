@@ -12,21 +12,8 @@ import LikesPage from './components/LikesPage';
 import SearchPage from './components/SearchPage';
 import TagsPage from './components/TagsPage';
 import Theme, { theme } from './themes/Theme.js';
+import ProtectedRoute from './util/route';
 
- const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest}
-  render={(props) => 
-    rest.needLogin === true ? ( <Redirect to='/login' /> ) : ( <Component {...props} /> )
-    }
-    />
-);
-
-const ProtectedRoute = ({ component: Component, ...rest  }) => (
-  <Route {...rest} render={(props) =>
-    rest.needLogin !== true ? <Redirect to='/' /> : <Component {...props} />
-  }
-  />
-)
 
 const App = ({ needLogin, loadToken }) => {
   const [loaded, setLoaded] = useState(false);
@@ -41,13 +28,15 @@ const App = ({ needLogin, loadToken }) => {
         <BrowserRouter>
           <Switch>
             <Route exact path='/login' component={LoginForm} />
-            <Route exact path='/' component={Home} />
             <Route exact path='/signup' component={SignupForm} />
             <Route exact path='/user/:userId' component={ProfilePage} />
             <Route exact path='/user/:userId/likes' component={LikesPage} />
             <Route path='/search/:query' component={SearchPage} />
             <Route path='/search' component={SearchPage} />
             <Route exact path='/tags/:tag' component={TagsPage} />
+            <ProtectedRoute exact={true} path='/' >
+              <Home />
+            </ProtectedRoute>
           </Switch>
         </BrowserRouter>
       </Theme>
