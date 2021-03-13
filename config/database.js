@@ -1,9 +1,6 @@
+const { username, password, database, host } = require('./index').db;
 const config = require('./');
-const db = config.db;
-const username = db.username;
-const password = db.password;
-const database = db.database;
-const host = db.host;
+
 
 module.exports = {
   development: {
