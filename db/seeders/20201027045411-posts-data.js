@@ -96,7 +96,7 @@ module.exports = {
       {
         userId: 5,
         type: 'image',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://timesofindia.indiatimes.com/photo/67586673.cms',
         createdAt: new Date('2020-09-05T02:15:49.780Z'),
         updatedAt: new Date('2020-09-05T02:15:49.780Z')
       },
@@ -104,14 +104,14 @@ module.exports = {
         userId: 6,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png',
         createdAt: new Date('2020-03-10T14:11:23.423Z'),
         updatedAt: new Date('2020-03-10T14:11:23.423Z')
       },
       {
         userId: 1,
         type: 'image',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://www.iams.com/images/default-source/article-image/article_stomach-issues-in-cats-why-cats-vomit-and-what-to-do_header.jpg',
         createdAt: new Date('2020-10-13T06:33:35.426Z'),
         updatedAt: new Date('2020-10-13T06:33:35.426Z')
       },
@@ -119,14 +119,14 @@ module.exports = {
         userId: 2,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://jngnposwzs-flywheel.netdna-ssl.com/wp-content/uploads/2019/05/Transparent-OrangeWhiteCat-764x1024.png',
         createdAt: new Date('2020-01-06T03:30:24.594Z'),
         updatedAt: new Date('2020-01-06T03:30:24.594Z')
       },
       {
         userId: 3,
         type: 'image',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://www.sciencenewsforstudents.org/wp-content/uploads/2020/02/021520_cats_feat_opt2-1028x579.jpg',
         createdAt: new Date('2020-10-17T06:05:11.283Z'),
         updatedAt: new Date('2020-10-17T06:05:11.283Z')
       },
@@ -141,7 +141,7 @@ module.exports = {
       {
         userId: 5,
         type: 'image',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-girl-cat-names-1606245046.jpg',
         createdAt: new Date('2020-10-24T09:55:59.675Z'),
         updatedAt: new Date('2020-10-24T09:55:59.675Z')
       },
@@ -149,7 +149,7 @@ module.exports = {
         userId: 6,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://www.history.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTYwNjI4NTczNjMwMTc4ODYy/viking-cat-promo-466250194.jpg',
         createdAt: new Date('2020-10-03T10:03:58.781Z'),
         updatedAt: new Date('2020-10-03T10:03:58.781Z')
       },
@@ -157,7 +157,7 @@ module.exports = {
         userId: 1,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://www.catster.com/wp-content/uploads/2016/11/vet-cat-vomit-57125178-600x574.jpg',
         createdAt: new Date('2020-10-24T06:25:51.810Z'),
         updatedAt: new Date('2020-10-24T06:25:51.810Z')
       },
@@ -173,7 +173,7 @@ module.exports = {
         userId: 3,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://s3-eu-west-1.amazonaws.com/barkibu-blog/blog+images/vomitos-en-gatos-cuando-deberia-preocuparme/gato_vomitos.png',
         createdAt: new Date('2020-08-04T07:02:46.206Z'),
         updatedAt: new Date('2020-08-04T07:02:46.206Z')
       },
@@ -181,7 +181,7 @@ module.exports = {
         userId: 4,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://cf.ltkcdn.net/cats/images/std/216289-677x450-What-happened.jpg',
         createdAt: new Date('2020-03-05T22:40:16.095Z'),
         updatedAt: new Date('2020-03-05T22:40:16.095Z')
       },
@@ -189,7 +189,7 @@ module.exports = {
         userId: 5,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://i.ytimg.com/vi/5r32HezYDS4/maxresdefault.jpg',
         createdAt: new Date('2020-10-16T12:16:11.930Z'),
         updatedAt: new Date('2020-10-16T12:16:11.930Z')
       },
@@ -197,21 +197,21 @@ module.exports = {
         userId: 6,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://images.medicanimal.com/image/upload/v1568124056/pethub/Kitten.jpg',
         createdAt: new Date('2020-06-22T16:18:37.604Z'),
         updatedAt: new Date('2020-06-22T16:18:37.604Z')
       }, {
         userId: 1,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://www.sciencenews.org/wp-content/uploads/2020/02/021520_catallergies_main.jpg',
         createdAt: new Date('2020-08-21T09:56:40.723Z'),
         updatedAt: new Date('2020-08-21T09:56:40.723Z')
       }, {
         userId: 2,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://cdn.mos.cms.futurecdn.net/yzV5i2F35i9RozwSeFLPJV.jpg',
         createdAt: new Date('2020-04-28T01:30:49.590Z'),
         updatedAt: new Date('2020-04-28T01:30:49.590Z')
       }, {
@@ -233,7 +233,7 @@ module.exports = {
         userId: 5,
         type: 'video',
         content: 'Molestiae laboriosam molestias odit omnis. Cumque similique neque.',
-        imgUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
+        imgUrl: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/41CF/production/_109474861_angrycat-index-getty3-3.jpg',
         createdAt: new Date('2020-08-06T02:25:02.119Z'),
         updatedAt: new Date('2020-08-06T02:25:02.119Z')
       },
