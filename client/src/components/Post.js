@@ -66,10 +66,14 @@ const useStyles = makeStyles((theme) => ({
 
 const Post = ({ post, userId, likes, currentUser }) => {
     const dispatch = useDispatch()
+
+    console.log('likes: ', likes)
     
     const users = useSelector(state => state.users)
     const user = users[`"${post.userId}"`]
     // const likes = useSelector(state => state.likes)
+    const [loaded, setLoaded] = useState(false)
+    const [numLikes, setNumLikes] = useState(post.Likes.length)
     const [isLiked, setIsLiked] = useState(likes.includes(post.id))
     const classes = useStyles(theme);
     userId = parseInt(userId)
@@ -77,9 +81,11 @@ const Post = ({ post, userId, likes, currentUser }) => {
     const handleLike = () => {
         if (!isLiked) {
             setIsLiked(true)
+            setNumLikes((numLikes + 1))
             dispatch(likePost(post.id))
         } else {
             setIsLiked(false)
+            setNumLikes((numLikes - 1))
             dispatch(unlikePost(post.id))
         }
 
@@ -92,14 +98,14 @@ const Post = ({ post, userId, likes, currentUser }) => {
         dispatch(removePost(post))
     }
 
-    console.log('4 in post: ')
-    console.log('post: ', post)
-    console.log('user: ', user)
-    console.log('currentuser: ', currentUser)
+    useEffect(() => {
+        (async () => {
+            setLoaded(true)
+        })()
+    })
 
     if (!post || !user || !currentUser) return null;
 
-    console.log('5 in post after check')
 
     let isFollowing = false;
     if (currentUser.follows.includes(user.id)) {
@@ -126,7 +132,7 @@ const Post = ({ post, userId, likes, currentUser }) => {
                 </IconButton>
             </div> */}
 
-            <PostFooter post={post} user={user} handleLike={handleLike} isLiked={isLiked} setIsLiked={setIsLiked} handleDelete={handleDelete} userId={userId} />
+            <PostFooter post={post} user={user} handleLike={handleLike} isLiked={isLiked} setIsLiked={setIsLiked} handleDelete={handleDelete} userId={userId} numLikes={numLikes} />
 
         </div>
     )

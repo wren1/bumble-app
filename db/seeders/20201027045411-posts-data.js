@@ -134,7 +134,7 @@ module.exports = {
         userId: 4,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://dogsbestlife.com/wp-content/uploads/2020/02/protect-corgi-puppy-from-parasites-scaled.jpeg',
         createdAt: new Date('2020-07-28T13:53:11.028Z'),
         updatedAt: new Date('2020-07-28T13:53:11.028Z')
       },
@@ -165,7 +165,7 @@ module.exports = {
         userId: 2,
         type: 'image',
         content: 'Facere nihil eos in sunt nostrum sit ipsam. Quis itaque distinctio velit dolor sed soluta ut.',
-        imgUrl: 'http://placeimg.com/640/480/animals',
+        imgUrl: 'https://www.thelabradorsite.com/wp-content/uploads/2018/04/Stop-Your-Puppy-Crying-%E2%80%93-Great-Tips-For-Settling-New-Puppies-Day-Night-LS-long.jpg',
         createdAt: new Date('2020-07-14T17:00:00.926Z'),
         updatedAt: new Date('2020-07-14T17:00:00.926Z')
       },

@@ -111,7 +111,7 @@ router.get('/api/search/:query', asyncHandler(async (req, res, next) => {
                 { content: 
                     { [Op.iLike]: `%${query}%` } } ] }, 
         order: [[ 'createdAt', 'DESC' ]],
-        include: [ { model: User } ]
+        include: [ { model: User }, { model: Like } ]
     })
     let users = [];
     results.forEach(post => users.push(post.User))

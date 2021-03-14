@@ -27,6 +27,9 @@ import { likePost, unlikePost } from '../store/actions/likes';
 
 
 const useStyles = makeStyles((theme) => ({
+    postFooterMain: {
+        width: '100%'
+    },
     postFooter: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -96,12 +99,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked, userId }) => {
+const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked, userId, numLikes }) => {
     const dispatch = useDispatch()
     const classes = useStyles(theme);
     // const liked = useSelector(state => state.likes.includes(post.id));
     // const [isLiked, setIsLiked] = useState(liked)
 
+    // const [numLikes, setNumLikes] = useState(post.Likes.length)
     const [displayTextPost, setDisplayTextPost] = useState(false);
     const [content, setContent] = useState(post.content || '')
     const [title, setTitle] = useState(post.title || '')
@@ -218,42 +222,42 @@ const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked,
 
 
     return (
-        <div>
-        <div className={classes.postFooter}>
-            {/* <Tags tags={post.Tags.length ? post.Tags : []} /> */}
-            <div className={classes.postFooter__likes} >
-                 
-            </div>
-            <div className={classes.postFooter__buttons}>
-                {!(post.userId === userId) ? null :
-                <IconButton className={classes.iconButton} onClick={handleOpen}>
-                        <EditIcon />
-                </IconButton>
-                }
-                <IconButton className={classes.iconButton} onClick={handleLike} >
-                    {isLiked ? <Favorite /> : <FavoriteBorder />}
-                </IconButton>
-            </div>
-        </div>
-
-        <Dialog open={open} onClose={handleClose} aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description" >
-            <form className={classes.postBlock__dialogBox} onSubmit={handleSubmit}>
-                {makePostDiv()}
-                <div className={classes.postBlock__dialogBoxButtons}>
-                    <Button className={classes.postBlock__dialogBoxButton} onClick={handleDelete} >
-                        Delete
-                    </Button>
-                    <div>
-                        <Button onClick={handleClose} className={classes.postBlock__dialogBoxButton}>
-                            Cancel
-                        </Button>
-                        <Button type='submit' className={classes.postBlock__dialogBoxButton}>
-                            Submit
-                        </Button>
-                    </div>
+        <div className={classes.postFooterMain}>
+            <div className={classes.postFooter}>
+                {/* <Tags tags={post.Tags.length ? post.Tags : []} /> */}
+                <div className={classes.postFooter__likes} >
+                    {numLikes} likes
                 </div>
-            </form>
-        </Dialog>
+                <div className={classes.postFooter__buttons}>
+                    {!(post.userId === userId) ? null :
+                    <IconButton className={classes.iconButton} onClick={handleOpen}>
+                            <EditIcon />
+                    </IconButton>
+                    }
+                    <IconButton className={classes.iconButton} onClick={handleLike} >
+                        {isLiked ? <Favorite /> : <FavoriteBorder />}
+                    </IconButton>
+                </div>
+            </div>
+
+            <Dialog open={open} onClose={handleClose} aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description" >
+                <form className={classes.postBlock__dialogBox} onSubmit={handleSubmit}>
+                    {makePostDiv()}
+                    <div className={classes.postBlock__dialogBoxButtons}>
+                        <Button className={classes.postBlock__dialogBoxButton} onClick={handleDelete} >
+                            Delete
+                        </Button>
+                        <div>
+                            <Button onClick={handleClose} className={classes.postBlock__dialogBoxButton}>
+                                Cancel
+                            </Button>
+                            <Button type='submit' className={classes.postBlock__dialogBoxButton}>
+                                Submit
+                            </Button>
+                        </div>
+                    </div>
+                </form>
+            </Dialog>
 
         </div>
     )

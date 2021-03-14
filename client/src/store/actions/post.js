@@ -82,7 +82,7 @@ export const getSearchPosts = (query) => async (dispatch, getState) => {
             // console.log(results[post])
             if (results[post].Tags) {
                 results[post].Tags.map(tag => tag.description)
-                posts[post].Likes.map(like => like.userId)
+                results[post].Likes.map(like => like.userId)
             }
             delete results[post].User
         }
