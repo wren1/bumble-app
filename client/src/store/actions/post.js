@@ -54,6 +54,7 @@ export const getFeedPosts = (userId) => async (dispatch, getState) => {
             // console.log('in store, post: ', posts[post])
             if (posts[post].Tags) {
                 posts[post].Tags.map(tag => tag.description)
+                posts[post].Likes.map(like => like.userId)
             }
         }
         // console.log('in store POSTS: ', posts)
@@ -81,6 +82,7 @@ export const getSearchPosts = (query) => async (dispatch, getState) => {
             // console.log(results[post])
             if (results[post].Tags) {
                 results[post].Tags.map(tag => tag.description)
+                posts[post].Likes.map(like => like.userId)
             }
             delete results[post].User
         }
@@ -100,6 +102,7 @@ export const getTagPosts = (tag) => async (dispatch, getState) => {
             if (results[post].Tags.length) {
                 posts[post] = post;
                 posts[post].Tags.map(tag => tag.description)
+                posts[post].Likes.map(like => like.userId)
             }
         }
         dispatch(loadPosts(posts))
@@ -121,6 +124,7 @@ export const getUserPosts = (userId) => async (dispatch, getState) => {
     for (let post in posts) {
         if (posts[post].Tags) {
             posts[post].Tags.map(tag => tag.description)
+            posts[post].Likes.map(like => like.userId)
         }
     }
     dispatch(loadOneUser(user));
@@ -205,6 +209,7 @@ export const getLikedPosts = (userId) => async (dispatch, getState) => {
         for (let post in posts) {
             if (posts[post].Tags) {
                 posts[post].Tags.map(tag => tag.description)
+                posts[post].Likes.map(like => like.userId)
             }
         }
         dispatch(loadPosts(posts))

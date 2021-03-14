@@ -15,6 +15,7 @@ router.get('/api/posts/:userId', asyncHandler(async (req, res, next) => {
     let users = await Follow.findAll({ where: { followerId: userId }, include: User });
     const follows = Object.values(users).map(user => user.followedUserId);
     let posts = await Post.findAll({where: { userId: [userId, ...follows] }, order: [['updatedAt', 'DESC']], include: [ { model: Tag }, { model: Like } ] });
+    
     users = users.map(user => user.User);
     let allUsers = users.map(user => {
         return {
