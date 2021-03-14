@@ -12,6 +12,7 @@ import { USER_KEY } from '../store/actions/auth';
 
 
 import ProfileHeader from './ProfileHeader';
+import ReturnHomeButton from './ReturnHomeButton';
 import NavBar from './NavBar';
 import Feed from './Feed';
 
@@ -22,11 +23,11 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
         flexDirection: 'column',
         padding: 'none',
         backgroundColor: '#1d1d1d',
-        // marginBottom: '100px'
+        marginBottom: '50px',
+        // position: 'relative'
     }
     // userProfile__main: {
     //     width: '100%',
@@ -36,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     //     justifyContent: 'center',
     //     flexDirection: 'column',
     //     padding: 'none',
-    //     backgroundColor: '#1d1d1d',
     // }
 }));
 
@@ -59,6 +59,7 @@ const ProfilePage = () => {
         }
     }
 
+    console.log('1 in pro page');
     
     useEffect(() => {
         (async () => {
@@ -71,10 +72,13 @@ const ProfilePage = () => {
     if (!user || !currentUser || !loaded) return null;
 
     return (
-        <Container className={classes.userProfile__main}>
-            <ProfileHeader user={user} />
-            <Feed userId={currentUserId} posts={posts} currentUser={currentUser} />
-        </Container>
+        <div>
+            <Container className={classes.userProfile__main}>
+                <ReturnHomeButton />
+                <ProfileHeader user={user} />
+                <Feed userId={currentUserId} posts={posts} currentUser={currentUser} />
+            </Container>
+        </div>
     )
 }
 export default ProfilePage;

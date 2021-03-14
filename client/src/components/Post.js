@@ -66,10 +66,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Post = ({ post, userId, likes, currentUser }) => {
     const dispatch = useDispatch()
-    // console.log('in post: ', post)
     
     const users = useSelector(state => state.users)
-    const user = users[post.userId]
+    const user = users[`"${post.userId}"`]
     // const likes = useSelector(state => state.likes)
     const [isLiked, setIsLiked] = useState(likes.includes(post.id))
     const classes = useStyles(theme);
@@ -93,7 +92,14 @@ const Post = ({ post, userId, likes, currentUser }) => {
         dispatch(removePost(post))
     }
 
+    console.log('4 in post: ')
+    console.log('post: ', post)
+    console.log('user: ', user)
+    console.log('currentuser: ', currentUser)
+
     if (!post || !user || !currentUser) return null;
+
+    console.log('5 in post after check')
 
     let isFollowing = false;
     if (currentUser.follows.includes(user.id)) {

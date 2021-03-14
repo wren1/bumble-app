@@ -17,9 +17,8 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: '100px',
+        marginBottom: '25px',
         position: 'relative',
-        zIndex: '9',
         top: '0px',
         padding: '20px'
     }

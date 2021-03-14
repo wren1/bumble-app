@@ -31,7 +31,7 @@ const Feed = ({ userId, posts, currentUser }) => {
     // const likes = useSelector(state => state.likes);
     const dispatch = useDispatch();
 
-    console.log('in feed')
+    console.log('2 in feed')
 
     
     const classes = useStyles(theme)
@@ -52,7 +52,7 @@ const Feed = ({ userId, posts, currentUser }) => {
 
     if (posts.length <= 0 || !posts || !currentUser || !loaded) return null; 
 
-    console.log('after check in feed: ', posts)
+    console.log('3 after check in feed: ')
 
     return (
         <Container className={classes.feed}>
