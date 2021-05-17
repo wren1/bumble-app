@@ -27,14 +27,14 @@ backend at https://github.com/wren1/bumble-backend.git
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <!-- <a href="#getting-started">Getting Started</a> -->
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <!-- <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li> -->
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#api-frontend">API Frontend</a></li>
+    <!-- <li><a href="#api-frontend">API Frontend</a></li> -->
     <li><a href="#api-backend">API Backend</a></li>
   </ol>
 </details>
@@ -42,7 +42,7 @@ backend at https://github.com/wren1/bumble-backend.git
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+<!-- ## About The Project
 * .
 ![splash]()
 
@@ -65,7 +65,7 @@ backend at https://github.com/wren1/bumble-backend.git
 ![createbusiness](readmeImages/createbusiness.png)
 
 * Database Schema
-![database](documentation/DBschema.png)
+![database](documentation/DBschema.png) -->
 
 
 ### Technical Stack
@@ -97,17 +97,17 @@ A blogging website where users can make posts and follow others.
 
 
 <!-- GETTING STARTED -->
-## Getting Started
------------
+<!-- ## Getting Started
+----------- -->
 
 <!-- To get a local copy up and running follow these simple steps. -->
 
-1. 
+<!-- 1.  -->
 
-### Prerequisites
+<!-- ### Prerequisites
 
 
-### Installation
+### Installation -->
 <!-- 
 
 1. Clone the repo
@@ -128,11 +128,11 @@ A blogging website where users can make posts and follow others.
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
------------
+<!-- ## Usage
+----------- -->
 
 
-
+<!-- 
 ## Frontend Routes
 --------------------------
 
@@ -160,7 +160,7 @@ A blogging website where users can make posts and follow others.
     - posts that match the searched query
 '/tags/:tag'
     - navbar
-    - posts with the matching tag
+    - posts with the matching tag -->
 
 --------------------------
 

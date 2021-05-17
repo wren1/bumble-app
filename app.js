@@ -8,44 +8,28 @@ const logger = require('morgan');
 const csurf = require('csurf');
 const routes = require('./routes');
 
-// const cors = require('cors');
-// const { ValidationError } = require('sequelize');
 
-// const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const postsRouter = require('./routes/api/posts');
-// const { environment } = require('./config');
 
 const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
-// app.use(cors({ origin: "http://localhost:3000" }))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser())
 
 
-// Security Middleware
 app.use(cors({ origin: true }));
 app.use(helmet({ hsts: false }));
-// app.use(csurf({
-//   cookie: {
-//     secure: process.env.NODE_ENV === 'production',
-//     sameSite: process.env.NODE_ENV === 'production',
-//     httpOnly: true
-//   }
-// }));
 
 
-// app.use(routes);
-// app.use(indexRouter);
 app.use(usersRouter);
 app.use(postsRouter);
 
-// Serve React Application
-// This should come after routes, but before 404 and error handling.
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get(/\/(?!api)*/, (req, res) => {
