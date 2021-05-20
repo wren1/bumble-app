@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     loginButton: {
         display: 'flex',
         justifyContent: 'space-around',
-        marginTop: '10px'
+        marginBottom: '10px'
     },
     loginForm__form: {
         display: 'flex',
@@ -77,6 +77,10 @@ const LoginForm = () => {
         dispatch(login(email, password));
     }
 
+    const demoLogin = () => {
+        dispatch(login("demo@aa.io", "password"));
+    }
+
     const updateEmail = (e) => {
         setEmail(e.target.value)
     }
@@ -92,9 +96,13 @@ const LoginForm = () => {
                 <form onSubmit={handleSubmit}>
                     <Box className={classes.loginForm__container}>
                         <div className={classes.loginForm__form} >
-                        <TextField className={classes.loginForm__input} id='standard-basic' type='text' placeholder='email' value={email} onChange={updateEmail} />
-                        <TextField className={classes.loginForm__input} id='standard-basic' type='password' placeholder='password' value={password} onChange={updatePassword} />
-                        <div className={classes.loginButton}><Button type='submit'>Log in</Button><Button onClick={() => window.location.href = '/signup'}>Sign Up</Button></div>
+                            <TextField className={classes.loginForm__input} id='standard-basic' type='text' placeholder='email' value={email} onChange={updateEmail} />
+                            <TextField className={classes.loginForm__input} id='standard-basic' type='password' placeholder='password' value={password} onChange={updatePassword} />
+                            <div className={classes.loginButton}>
+                                <Button type='submit'>Log in</Button>
+                                <Button onClick={demoLogin} >Demo</Button>
+                            </div>
+                            <Button onClick={() => window.location.href = '/signup'}>Don't have an account yet?</Button>
                         </div>
                     </Box>
                 </form>

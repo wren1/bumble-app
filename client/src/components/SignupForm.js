@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { signup } from '../store/actions/auth';
+import { signup, login } from '../store/actions/auth';
 import NavBar from './NavBar';
 
 import { theme } from '../themes/Theme';
@@ -43,10 +43,14 @@ const useStyles = makeStyles((theme) => ({
         border: 'none',
         padding: '5px'
     },
+    signupForm__buttons: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        marginBottom: '10px'
+    },
     signupButton: {
         display: 'flex',
         justifyContent: 'space-around',
-        marginTop: '10px'
     },
     signupForm__form: {
         display: 'flex',
@@ -80,6 +84,10 @@ const SignUpForm = () => {
         dispatch(signup(username, email, password))
     }
 
+    const demoLogin = () => {
+        dispatch(login("demo@aa.io", "password"));
+    }
+
     const updateUsername = (e) => {
         setUsername(e.target.value);
     }
@@ -97,10 +105,16 @@ const SignUpForm = () => {
             <form onSubmit={handleSubmit}>
                 <Box className={classes.signupForm__container}>
                     <div className={classes.signupForm__form}>
-                    <TextField className={classes.signupForm__input} type='email' placeholder='email' value={email} onChange={updateEmail} />
-                    <TextField className={classes.signupForm__input} type='username' placeholder='username' value={username} onChange={updateUsername} />
-                    <TextField className={classes.signupForm__input} type='password' placeholder='password' value={password} onChange={updatePassword} />
-                    <Button type='submit'>Sign up</Button><Button onClick={() => window.location.href = '/login'}>Already have an account?</Button></div><div className={classes.signupButton}>
+                        <TextField className={classes.signupForm__input} type='email' placeholder='email' value={email} onChange={updateEmail} />
+                        <TextField className={classes.signupForm__input} type='username' placeholder='username' value={username} onChange={updateUsername} />
+                        <TextField className={classes.signupForm__input} type='password' placeholder='password' value={password} onChange={updatePassword} />
+                        <div className={classes.signupForm__buttons} >
+                            <Button type='submit'>Sign up</Button>
+                            <Button onClick={demoLogin} >Demo</Button>
+                        </div>
+                        <Button onClick={() => window.location.href = '/login'}>Already have an account?</Button>
+                    </div>
+                    <div className={classes.signupButton}>
                     </div>
                 </Box>
             </form>
