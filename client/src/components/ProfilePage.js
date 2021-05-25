@@ -59,7 +59,6 @@ const ProfilePage = () => {
         }
     }
 
-    console.log('1 in pro page');
     
     useEffect(() => {
         (async () => {

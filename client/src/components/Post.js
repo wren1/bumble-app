@@ -66,8 +66,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Post = ({ post, userId, likes, currentUser }) => {
     const dispatch = useDispatch()
-
-    console.log('likes: ', likes)
     
     const users = useSelector(state => state.users)
     const user = users[`"${post.userId}"`]

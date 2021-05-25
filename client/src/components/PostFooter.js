@@ -114,9 +114,6 @@ const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked,
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
 
-    const handleEdit = () => {
-        console.log('edit: ')
-    }
 
     if (!post) return null;
 

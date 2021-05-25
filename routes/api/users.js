@@ -84,7 +84,6 @@ router.get('/api/users/:userId/posts', asyncHandler(async (req, res, next) => {
     const user = await User.findByPk(userId);
     const { username, profilePic, banner, aboutTitle, aboutContent } = user;
     const posts = await Post.findAll({ where: { userId }, order: [['updatedAt', 'DESC']], include: [ { model: Tag }, { model: Like } ] })
-    console.log('user n posts: ', user, posts)
     res.json({ user, posts })
 }))
 

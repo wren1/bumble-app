@@ -35,10 +35,8 @@ const SearchPage = () => {
     const posts = useSelector(state => state.post.posts);
 
     useEffect(() => {
-        console.log(query)
         dispatch(getSearchPosts(query))
     }, [query])
-    console.log('search posts: ', posts);
 
     return (
         <div className={classes.searchPage__main}>

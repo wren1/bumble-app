@@ -58,7 +58,6 @@ export const getFeedPosts = (userId) => async (dispatch, getState) => {
             }
         }
         // console.log('in store POSTS: ', posts)
-        console.log('in store USERS: ', users)
         dispatch(loadPosts(posts));
         dispatch(loadUsers(users));
     } catch (e) {
@@ -112,7 +111,6 @@ export const getTagPosts = (tag) => async (dispatch, getState) => {
 }
 
 export const getUserPosts = (userId) => async (dispatch, getState) => {
-    console.log('getposts: ', userId);
     const { authentication: { token } } = getState();
     const res = await fetch(`/api/users/${userId}/posts`, {
         headers: {
@@ -120,7 +118,6 @@ export const getUserPosts = (userId) => async (dispatch, getState) => {
         }
     })
     const { user, posts } = await res.json();
-    console.log('get user posts: ', posts)
     for (let post in posts) {
         if (posts[post].Tags) {
             posts[post].Tags.map(tag => tag.description)
@@ -147,7 +144,6 @@ export const makeNewPost = (title, content, type) => async (dispatch, getState) 
             },
             body: JSON.stringify({title, content, userId, type, imgUrl})
         });
-        console.log('in action: ', title, content, type, imgUrl)
         const { post } = await res.json();
         // console.log('post: ', post);
         dispatch(newPost(post))
