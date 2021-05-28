@@ -39,7 +39,6 @@ export const editPost = (post) => {
 }
 
 export const getFeedPosts = (userId) => async (dispatch, getState) => {
-    // console.log('getposts: ', userId);
     const { authentication: { token } } = getState();
     try {
         const res = await fetch(`/api/posts/${userId}`, {
@@ -48,16 +47,12 @@ export const getFeedPosts = (userId) => async (dispatch, getState) => {
             }
         })
         const { posts, users } = await res.json();
-        // console.log('posssttss in store: ', posts)
         for (let post in posts) {
-            // let tags = []
-            // console.log('in store, post: ', posts[post])
             if (posts[post].Tags) {
                 posts[post].Tags.map(tag => tag.description)
                 posts[post].Likes.map(like => like.userId)
             }
         }
-        // console.log('in store POSTS: ', posts)
         dispatch(loadPosts(posts));
         dispatch(loadUsers(users));
     } catch (e) {
@@ -76,9 +71,7 @@ export const getSearchPosts = (query) => async (dispatch, getState) => {
         }
         const res = await fetch(searchUrl);
         const { results, users } = await res.json();
-        // console.log('getSearchPosts: ', results)
         for (let post in results) {
-            // console.log(results[post])
             if (results[post].Tags) {
                 results[post].Tags.map(tag => tag.description)
                 results[post].Likes.map(like => like.userId)
@@ -145,7 +138,6 @@ export const makeNewPost = (title, content, type) => async (dispatch, getState) 
             body: JSON.stringify({title, content, userId, type, imgUrl})
         });
         const { post } = await res.json();
-        // console.log('post: ', post);
         dispatch(newPost(post))
     } catch (e) {
         console.log(e);

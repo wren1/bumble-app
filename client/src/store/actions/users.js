@@ -53,8 +53,6 @@ export const getUser = (userId) => async (dispatch, getState) => {
             }
         })
         const { user } = await res.json();
-        // user.Likes.map(like => like['postId'])
-        // console.log('users get user: ', userId, user)
         dispatch(setCurrentUser(user))
     } catch (e) {
         console.error(e)

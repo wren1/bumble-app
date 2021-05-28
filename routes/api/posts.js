@@ -60,7 +60,6 @@ router.put('/api/posts/:postId', asyncHandler(async (req, res, next) => {
 
 // delete a post, if the current user is the one that posted the post
 router.delete('/api/posts/:postId', asyncHandler(async (req, res, next) => {
-    // console.log('post backend delete', postId, userId)
     let { userId } = req.body;
     const postId = parseInt(req.params.postId, 10);
     userId = parseInt(userId);

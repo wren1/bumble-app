@@ -43,20 +43,9 @@ const Home = () => {
     const userId = window.localStorage.getItem(USER_KEY)
     const currentUser = useSelector(state => state.current.currentUser)
 
-    // let allPosts = useSelector(state => state.post.posts);
-    // const posts = [];
-    // for (let post in allPosts) {
-    //     posts.push(allPosts[post])
-    // }
-
-    // if (likes) console.log('likes: ', likes)
 
     let allPosts = useSelector(state => state.posts);
-    // const posts = {};
-    // for (let post in allPosts) {
-    //     // posts[allPosts[post.id]] = allPosts[post]
-    //     posts[allPosts[post]] = allPosts[post]
-    // }
+    
     let posts = [];
     if (allPosts) {
         for (let post in allPosts) {
@@ -67,8 +56,6 @@ const Home = () => {
 
     useEffect(() => {
         (async () => {
-            // dispatch(loadLikes(userId))
-            // console.log('Home useEffect: ', userId)
             await dispatch(getUser(userId))
             if (query) {
                 await dispatch(getSearchPosts(query))

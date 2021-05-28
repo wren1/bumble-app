@@ -34,11 +34,9 @@ const Feed = ({ userId, posts, currentUser }) => {
 
     
     const classes = useStyles(theme)
-    // console.log('in feed posts: ', currentUser, posts, posts.length)
 
 
     // useEffect(() => {
-    //     console.log('load likes: ', likes)
     //     dispatch(loadLikes(userId))
     // }, [])
     let likes;
