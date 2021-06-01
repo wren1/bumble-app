@@ -59,7 +59,6 @@ router.get('/api/users/:userId', asyncHandler(async (req, res, next) => {
         likes: user.Likes, 
         follows: user.Follows
      }
-    // const users = await User.findAll({ where: { id: followIds }, order: [['username', 'DESC']] });
     res.json({ user: currentUser }) 
 }))
 
@@ -122,8 +121,6 @@ router.get('/api/users/:userId/tags/:tag', asyncHandler(async (req, res, next) =
     const userId = parseInt(req.params.userId, 10);
     const tag = parseInt(req.params.tag);
     const posts = Tag.findAll({ where: { description: tag },  })
-    // const user = await User.findByPk(userId, { include: [{ model: Follow }] });
-    // const users = await User.findAll({ where: { id: followIds }, order: [['username', 'DESC']] });
     res.json({ posts }) 
 }))
 

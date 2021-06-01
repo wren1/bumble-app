@@ -34,7 +34,6 @@ router.get('/api/posts/:userId', asyncHandler(async (req, res, next) => {
 
 // create a new post
 router.post('/api/posts', asyncHandler(async (req, res, next) => {
-    // imgUrl
     const { userId, type, title, content, imgUrl } = req.body;
     // handle errors
     if (type === 'image') {
@@ -50,10 +49,8 @@ router.post('/api/posts', asyncHandler(async (req, res, next) => {
 router.put('/api/posts/:postId', asyncHandler(async (req, res, next) => {
     const id = parseInt(req.params.postId, 10);
     const { userId, type, title, content, imgUrl } = req.body.post;
-    // const { post } = req.body;
     // handle errors
     const updatedPost = await Post.findByPk(id);
-    // const updatedPost = await post.update({ userId, type, title, content, imgUrl });
     await updatedPost.update({ userId, type, title, content, imgUrl });
     res.json({ post: updatedPost })
 }))
@@ -64,7 +61,6 @@ router.delete('/api/posts/:postId', asyncHandler(async (req, res, next) => {
     const postId = parseInt(req.params.postId, 10);
     userId = parseInt(userId);
     const post = await Post.findByPk(postId);
-    // await Post.destroy({ where: { userId, id: postId } })
     if (post.userId === userId) {
         await post.destroy();
         res.status(201).json({ msg: 'Post deleted successfully.' });
