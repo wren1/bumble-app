@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container'
 
 import { theme } from '../themes/Theme';
@@ -13,7 +13,6 @@ import { USER_KEY } from '../store/actions/auth';
 
 import ProfileHeader from './ProfileHeader';
 import ReturnHomeButton from './ReturnHomeButton';
-import NavBar from './NavBar';
 import Feed from './Feed';
 
 
@@ -27,17 +26,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 'none',
         backgroundColor: '#1d1d1d',
         marginBottom: '50px',
-        // position: 'relative'
     }
-    // userProfile__main: {
-    //     width: '100%',
-    //     height: '100%',
-    //     display: 'flex',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //     flexDirection: 'column',
-    //     padding: 'none',
-    // }
 }));
 
 const ProfilePage = () => {

@@ -114,11 +114,7 @@ const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked,
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
 
-
     if (!post) return null;
-
-
-    
 
     function rand() {
         return Math.round(Math.random() * 20) - 10;

@@ -8,7 +8,7 @@ import { Favorite, FavoriteBorder } from '@material-ui/icons';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CloseIcon from '@material-ui/icons/Close';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
 
 import { follow, unfollow } from '../store/actions/follows';

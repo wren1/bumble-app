@@ -1,8 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
-// import classes from '*.module.css';
 
 
 const useStyles = makeStyles((theme) => ({

@@ -57,7 +57,6 @@ export const likePost = (id) => async (dispatch, getState) => {
         })
         const { like: { postId } } = await res.json();
         dispatch(newLike(postId))
-        // dispatch(setCurrentUser())
     } catch(e) {
         console.log(e);
     }

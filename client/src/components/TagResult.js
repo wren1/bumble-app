@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import IconButton from '@material-ui/core/IconButton';
 import { Favorite, FavoriteBorder } from '@material-ui/icons';
@@ -6,7 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete';import { fade, makeStyles } f
 import { theme } from '../themes/Theme';
 
 import { removePost } from '../store/actions/post'; 
-import { likePost, unlikePost, loadLikes } from '../store/actions/likes';
+import { likePost, unlikePost } from '../store/actions/likes';
 import ProfilePic from './ProfilePic';
 
 
@@ -55,10 +55,8 @@ const useStyles = makeStyles((theme) => ({
 const TagResult = ({ post, tag, userId, likes }) => {
     const dispatch = useDispatch()
     const classes = useStyles(theme)
-    // const currentUser = useSelector(state => state.users[`"${userId}"`])
     const user = useSelector(state => state.users[`"${post.userId}"`])
     const [isLiked, setIsLiked] = useState(likes.includes(post.id))
-    // userId = parseInt(userId)
 
     const handleLike = () => {
         if (!isLiked) {
