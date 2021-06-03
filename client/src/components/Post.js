@@ -13,10 +13,10 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
 
 import { removePost } from '../store/actions/post'; 
-import { likePost, unlikePost, loadLikes } from '../store/actions/likes';
+import { likePost, unlikePost } from '../store/actions/likes';
 import PostHeader from './PostHeader';
 import PostFooter from './PostFooter';
-import ProfilePic from './ProfilePic';
+
 
 const useStyles = makeStyles((theme) => ({
     postContainer: {
@@ -29,12 +29,10 @@ const useStyles = makeStyles((theme) => ({
         width: '650px',
         maxWidth: '650',
         maxHeight: '1000',
-        // overflow: 'hidden',
         overflowWrap: 'break-word',
         borderRadius: '5px',
         backgroundColor: '#fff',
         padding: '10px 20px 10px 20px',
-        // position: 'relative'
     },
     feedPost__img: {
         maxWidth: '650px',
@@ -69,7 +67,7 @@ const Post = ({ post, userId, likes, currentUser }) => {
     
     const users = useSelector(state => state.users)
     const user = users[`"${post.userId}"`]
-    // const likes = useSelector(state => state.likes)
+
     const [loaded, setLoaded] = useState(false)
     const [numLikes, setNumLikes] = useState(post.Likes.length)
     const [isLiked, setIsLiked] = useState(likes.includes(post.id))
@@ -113,23 +111,11 @@ const Post = ({ post, userId, likes, currentUser }) => {
 
     return (
         <div className={classes.postContainer}>
-            {/* <ProfilePic user={user} /> */}
             <PostHeader post={post} user={user} currentUser={currentUser} isFollowing={isFollowing} />
                     {!post.title ? null : 
                         <div className={post.type === 'quote' ? classes.quotePost : classes.textPost}>{post.title}</div> }
                     {!post.imgUrl ? null : <img src={post.imgUrl} className={classes.feedPost__img} />}
                     {!post.content ? null : <div className={classes.post__content} >{post.content}</div>}
-
-            {/* <div className={classes.postFooter}>
-                {post.userId !== userId ? null :
-                <IconButton className={classes.iconButton} onClick={handleDelete}>
-                    <DeleteIcon />
-                </IconButton> }
-                <IconButton className={classes.iconButton} onClick={handleLike} >
-                    {isLiked === true ? <Favorite /> : <FavoriteBorder />}
-                </IconButton>
-            </div> */}
-
             <PostFooter post={post} user={user} handleLike={handleLike} isLiked={isLiked} setIsLiked={setIsLiked} handleDelete={handleDelete} userId={userId} numLikes={numLikes} />
 
         </div>

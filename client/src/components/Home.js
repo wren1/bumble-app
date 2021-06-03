@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Container from '@material-ui/core/Container'
 
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
 
 import NavBar from './NavBar';
@@ -12,7 +12,6 @@ import SearchHeader from './SearchHeader';
 
 import { USER_KEY } from '../store/actions/auth';
 import { getFeedPosts } from '../store/actions/post';
-import { loadLikes } from '../store/actions/likes';
 import { getSearchPosts } from '../store/actions/post';
 import { getUser } from '../store/actions/users';
 
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
     const query = useSelector(state => state.current.search)
-    // const likes = useSelector(state => state.current.currentUser.likes)
+
     const classes = useStyles(theme);
     const dispatch = useDispatch();
     const userId = window.localStorage.getItem(USER_KEY)

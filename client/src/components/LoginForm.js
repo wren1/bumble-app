@@ -16,7 +16,6 @@ import { theme } from '../themes/Theme';
 const useStyles = makeStyles((theme) => ({
     loginForm__main: {
         position: 'relative',
-        // margin: '0 auto',
         width: '100%',
         height: '100%',
         top: '90px',

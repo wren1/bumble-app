@@ -25,22 +25,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Feed = ({ userId, posts, currentUser }) => {
+    const classes = useStyles(theme)
     const [loaded, setLoaded] = useState(false)
-    const loggedIn = useSelector(state => !!state.authentication.token);
-    const query = useSelector(state => state.current.search)
-    // const likes = useSelector(state => state.likes);
-    const dispatch = useDispatch();
-
 
     
-    const classes = useStyles(theme)
-
-
-    // useEffect(() => {
-    //     dispatch(loadLikes(userId))
-    // }, [])
-    let likes;
-
     useEffect(() => {
         (async () => {
             setLoaded(true)

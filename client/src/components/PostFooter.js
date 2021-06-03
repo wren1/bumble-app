@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
@@ -102,10 +102,7 @@ const useStyles = makeStyles((theme) => ({
 const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked, userId, numLikes }) => {
     const dispatch = useDispatch()
     const classes = useStyles(theme);
-    // const liked = useSelector(state => state.likes.includes(post.id));
-    // const [isLiked, setIsLiked] = useState(liked)
-
-    // const [numLikes, setNumLikes] = useState(post.Likes.length)
+    
     const [displayTextPost, setDisplayTextPost] = useState(false);
     const [content, setContent] = useState(post.content || '')
     const [title, setTitle] = useState(post.title || '')
