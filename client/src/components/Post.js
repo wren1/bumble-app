@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
-import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import SvgIcon from '@material-ui/core/SvgIcon';
-import { Favorite, FavoriteBorder } from '@material-ui/icons';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
 
 import { removePost } from '../store/actions/post'; 

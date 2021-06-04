@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 import Container from '@material-ui/core/Container';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { USER_KEY } from '../store/actions/auth';
 import { getFeedPosts } from '../store/actions/post';
 import { loadLikes } from '../store/actions/likes';
 
 import Post from './Post';
-import { CollectionsBookmarkOutlined } from '@material-ui/icons';
 import { theme } from '../themes/Theme';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         width: '650px',
-        // overflow: 'hidden',
     }
 }));
 
