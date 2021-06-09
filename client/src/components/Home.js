@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         flexDirection: 'column',
         padding: 'none',
-        // overflow: 'hidden',
     },
     postBlock: {
         display: 'flex',

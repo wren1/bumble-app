@@ -2,28 +2,15 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import IconButton from '@material-ui/core/IconButton';
-import SvgIcon from '@material-ui/core/SvgIcon';
 import { Favorite, FavoriteBorder } from '@material-ui/icons';
 import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
 import { updatePost } from '../store/actions/post';
 
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import TextFieldsIcon from '@material-ui/icons/TextFields';
-import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
-import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
-import Icon from '@material-ui/core/Icon';
 import Dialog from '@material-ui/core/Dialog';
-
-import Tags from './Tags';
-
-import { likePost, unlikePost } from '../store/actions/likes';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -164,13 +151,11 @@ const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked,
                 return (
                     <div className={classes.postBlock__textInputArea}>
                         <TextField className={classes.postBlock__dialogBoxTitleInput} 
-                            // placeholder="Title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
                         <TextField className={classes.postBlock__dialogBoxContentInput} 
                             id="standard-multiline-static"
-                            // placeholder="Your content here"
                             multiline
                             rows={8}
                             value={content}
@@ -181,13 +166,11 @@ const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked,
             if (postType === 'image') {
                 return <div className={classes.postBlock__textInputArea}>
                         <TextField className={classes.postBlock__dialogBoxTitleInput} 
-                            // placeholder="image url"
                             value={imgUrl}
                             onChange={(e) => setImgUrl(e.target.value)}
                         />
                         <TextField className={classes.postBlock__dialogBoxContentInput} 
                             id="standard-multiline-static"
-                            // placeholder="Your content here"
                             multiline
                             rows={8}
                             value={content}
@@ -197,12 +180,10 @@ const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked,
             if (postType === 'quote') {
                 return <div className={classes.postBlock__textInputArea}>
                         <TextField className={classes.postBlock__dialogBoxTitleInput} 
-                            // placeholder='"Quote"'
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
                         <TextField className={classes.postBlock__dialogBoxContentInput}
-                            // placeholder="- Source"
                             value={content}
                             onChange={(e) => setContent(e.target.value)} />
                     </div>
