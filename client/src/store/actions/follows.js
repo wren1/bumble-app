@@ -1,6 +1,4 @@
 import { loadUsers } from './users';
-import { baseUrl } from './configUrl';
-import { setUser } from '../reducers/current';
 
 
 export const getFollows = (userId) => async (dispatch, getState) => {

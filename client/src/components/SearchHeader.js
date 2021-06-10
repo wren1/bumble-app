@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { fade, makeStyles } from '@material-ui/core/styles';
-import { theme } from '../themes/Theme';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 const useStyles = makeStyles(() => ({
     searchHeader: {

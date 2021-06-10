@@ -1,4 +1,3 @@
-import { baseUrl } from './configUrl';
 import { setCurrentUser } from  '../reducers/current';
 
 export const LOAD_USERS = 'LOAD_USERS';

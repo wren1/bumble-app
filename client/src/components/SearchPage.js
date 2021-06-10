@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { getSearchPosts } from '../store/actions/post';
 

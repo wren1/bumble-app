@@ -1,7 +1,5 @@
-import { baseUrl } from './configUrl';
 import { USER_KEY } from './auth';
 import { loadPosts } from './post';
-import { setCurrentUser } from '../reducers/current';
 
 export const NEW_LIKE = 'NEW_LIKE';
 export const GET_LIKES = 'GET_LIKES';

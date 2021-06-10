@@ -1,9 +1,6 @@
-
-import { baseUrl } from './configUrl';
 import { USER_KEY } from './auth';
 
 import { loadUsers, loadOneUser } from './users';
-// import { TagFaces } from '@material-ui/icons';
 
 export const NEW_POST = 'NEW_POST';
 export const EDIT_POST = 'EDIT_POST';
