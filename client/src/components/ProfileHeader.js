@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
 import { theme } from '../themes/Theme';
 import ProfileInfoBlock from './ProfileInfoBlock';
 
@@ -25,12 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProfileHeader = ({ user }) => {
-    // const { userId } = useParams();
-    const dispatch = useDispatch();
-
     const classes = useStyles(theme);
-
-    // const user = useSelector(state => state.users[userId])
 
     if (!user) return null;
 
@@ -40,7 +32,7 @@ const ProfileHeader = ({ user }) => {
                 {!user.banner ? 
                     null
                 :
-                    <img src={user.benner} />
+                    <img src={user.banner} />
                 }
             </div> */}
             <ProfileInfoBlock user={user} />
