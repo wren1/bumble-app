@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 import Icon from '@material-ui/core/Icon';
 import Dialog from '@material-ui/core/Dialog';
 
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
 import { makeNewPost } from '../store/actions/post';
 
@@ -121,15 +117,7 @@ const PostBlock = () => {
             transform: `translate(-${top}%, -${left}%)`,
         };
     }
-    const body = (
-        <div style={modalStyle} className={classes.paper}>
-        <h2 id="simple-modal-title">Text in a modal</h2>
-        <p id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </p>
-        <PostBlock />
-        </div>
-    );
+    
     
 
     const handleSubmit = (e) => {

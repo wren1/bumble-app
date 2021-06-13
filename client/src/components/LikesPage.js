@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
 import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
 
 import { getLikedPosts } from '../store/actions/post';
 import LikesHeader from './LikesHeader';
@@ -44,4 +43,6 @@ const LikesPage = () => {
         </Container>
     )
 }
+
+
 export default LikesPage;

@@ -28,4 +28,6 @@ const LikesHeader = ({ user }) => {
         </div>
     )
 }
+
+
 export default LikesHeader;

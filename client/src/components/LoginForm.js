@@ -12,6 +12,7 @@ import NavBar from './NavBar';
 
 import { theme } from '../themes/Theme';
 
+
 const useStyles = makeStyles((theme) => ({
     loginForm__main: {
         position: 'relative',
@@ -26,10 +27,8 @@ const useStyles = makeStyles((theme) => ({
         width: '500px',
         height: '380px',
         display: 'flex',
-        // flexDirection: 'column',
         justifyContent: 'center',
         alignContent: 'center',
-        // margin: '20px',
         borderRadius: '20px',
         backgroundColor: 'white',
         padding: '40px',
@@ -55,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '20px'
     }
 }))
+
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');

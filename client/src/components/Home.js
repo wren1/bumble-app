@@ -15,6 +15,7 @@ import { getFeedPosts } from '../store/actions/post';
 import { getSearchPosts } from '../store/actions/post';
 import { getUser } from '../store/actions/users';
 
+
 const useStyles = makeStyles((theme) => ({
     mainContainer: {
         width: '100%',
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
         border: '3px solid orange'
     }
 }));
+
 
 const Home = () => {
     const query = useSelector(state => state.current.search)

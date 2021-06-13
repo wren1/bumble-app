@@ -113,4 +113,6 @@ const Post = ({ post, userId, likes, currentUser }) => {
         </div>
     )
 }
+
+
 export default Post;
