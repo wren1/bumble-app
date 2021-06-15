@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
 const LikesHeader = ({ user }) => {
 
     const classes = useStyles(theme);

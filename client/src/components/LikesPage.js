@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
 const LikesPage = () => {
     const classes = useStyles(theme)
     const dispatch = useDispatch();
@@ -28,7 +29,6 @@ const LikesPage = () => {
 
     const posts = useSelector(state => state.post.posts);
     const user = useSelector(state => state.users[userId])
-
 
     useEffect(() => {
         dispatch(getLikedPosts(userId))

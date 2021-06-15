@@ -3,12 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { USER_KEY } from '../store/actions/auth';
-import { getFeedPosts } from '../store/actions/post';
-import { loadLikes } from '../store/actions/likes';
-
 import Post from './Post';
 import { theme } from '../themes/Theme';
+
 
 const useStyles = makeStyles((theme) => ({
     feed: {
@@ -20,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
         width: '650px',
     }
 }));
+
 
 const Feed = ({ userId, posts, currentUser }) => {
     const classes = useStyles(theme)
@@ -45,4 +43,6 @@ const Feed = ({ userId, posts, currentUser }) => {
         </Container>
     )
 }
+
+
 export default Feed;

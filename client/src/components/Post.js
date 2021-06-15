@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
 const Post = ({ post, userId, likes, currentUser }) => {
     const dispatch = useDispatch()
     

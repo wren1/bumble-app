@@ -12,6 +12,7 @@ import { logout } from '../store/actions/auth';
 import { theme } from '../themes/Theme';
 import { setCurrentSearch, setCurrentSearchType } from '../store/reducers/current';
 
+
 const useStyles = makeStyles((theme) => ({
     navbar: {
         display: 'flex',
@@ -50,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
         justify: 'flex-end'
     }
 }));
+
 
 const NavBar = () => {
 
@@ -93,4 +95,5 @@ const NavBar = () => {
         </div>
     )
 }
+
 export default NavBar;
