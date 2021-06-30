@@ -29,22 +29,22 @@ const useStyles = makeStyles((theme) => ({
         cursor: 'pointer'
     },
     searchBar: {
+        backgroundColor: '#fff',
+        borderRadius: '6px 6px 6px 6px',
         display: 'flex',
         marginLeft: '100px',
-        width: '500px'
+        width: '500px',
+        padding: '3px'
     },
     searchBar__input: {
-        backgroundColor: '#fff',
-        borderRadius: '0px 6px 6px 0px',
         width: '400px',
-        paddingLeft: '15px'
+        paddingLeft: '5px'
     },
     navbar__searchIcon: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
-        borderRadius: '6px 0px 0px 6px',
         padding: '5px'
     },
     logoutButton: {
