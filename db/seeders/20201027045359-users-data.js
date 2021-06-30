@@ -3,6 +3,16 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [
+      {
+        email: 'demo@aa.io',
+        password: '$2a$10$7rv7P4qz3Fdd.e9YtPxNyuFjsoXDrufZjoLHIIZhvcfuKvbjexxGS',
+        username: 'Demo',
+        banner: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1500&q=80',
+        aboutTitle: 'Hello there',
+        aboutContent: 'This is a demo account! Make posts! Follow users! Have fun! :)',
+        updatedAt: new Date(),
+        createdAt: new Date()
+      },
       { email: 'abrams@ghgh.orb', password: '4e8cb088d3ccf23ba0e0', username: 'abrams', profilePic: 'https://s3.amazonaws.com/uifaces/faces/twitter/jervo/128.jpg', banner: 'http://placeimg.com/640/480/abstract', aboutTitle: 'About Me', aboutContent: 'My name is Abram. Abram is the name. Abram Abrams', updatedAt: new Date(), createdAt: new Date() },
       {
         email: 'jess123@oogie.orb',
