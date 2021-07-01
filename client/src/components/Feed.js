@@ -15,6 +15,12 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         width: '650px',
+    },
+    feed__noPosts: {
+        color: 'white',
+        padding: '15px',
+        marginTop: '35px',
+        fontSize: '20px'
     }
 }));
 
@@ -30,7 +36,13 @@ const Feed = ({ userId, posts, currentUser }) => {
         })()
     })
 
-    if (posts.length <= 0 || !posts || !currentUser || !loaded) return null; 
+    if (!posts || !currentUser || !loaded) return null;
+    else if (posts.length <= 0) return (
+        <div className={classes.feed__noPosts} >
+            Oops! Nothing here...
+        </div>
+    );
+    else 
 
 
     return (
