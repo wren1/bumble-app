@@ -62,7 +62,7 @@ const Post = ({ post, userId, likes, currentUser }) => {
     const user = users[`"${post.userId}"`]
 
     const [loaded, setLoaded] = useState(false)
-    const [numLikes, setNumLikes] = useState(post.Likes.length)
+    const [numLikes, setNumLikes] = useState(post.likes.length)
     const [isLiked, setIsLiked] = useState(likes.includes(post.id))
     const classes = useStyles(theme);
     userId = parseInt(userId)
@@ -109,6 +109,7 @@ const Post = ({ post, userId, likes, currentUser }) => {
                         <div className={post.type === 'quote' ? classes.quotePost : classes.textPost}>{post.title}</div> }
                     {!post.imgUrl ? null : <img src={post.imgUrl} className={classes.feedPost__img} />}
                     {!post.content ? null : <div className={classes.post__content} >{post.content}</div>}
+
             <PostFooter post={post} user={user} handleLike={handleLike} isLiked={isLiked} setIsLiked={setIsLiked} handleDelete={handleDelete} userId={userId} numLikes={numLikes} />
 
         </div>

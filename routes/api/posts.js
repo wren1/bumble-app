@@ -29,7 +29,21 @@ router.get('/api/posts/:userId', asyncHandler(async (req, res, next) => {
             follows: user.Follows
         }
     })
-    res.json({ posts, users: [...allUsers, user]});
+    let allPosts = posts.map(post => {
+        return {
+            id: post.id,
+            userId: post.userId,
+            type: post.type,
+            title: post.title,
+            content: post.content,
+            imgUrl: post.imgUrl,
+            createdAt: post.createdAt,
+            updatedAt: post.updatedAt,
+            tags: post.Tags.map(tag => tag.description),
+            likes: post.Likes.map(like => like.userId)
+        }
+    })
+    res.json({ posts: allPosts, users: [...allUsers, user]});
 }))
 
 // create a new post

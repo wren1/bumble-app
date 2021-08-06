@@ -11,6 +11,7 @@ import { updatePost } from '../store/actions/post';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
+import Tags from './Tags';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -85,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
         height: '75px'
     }
 }))
+
 
 const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked, userId, numLikes }) => {
     const dispatch = useDispatch()
@@ -195,7 +197,7 @@ const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked,
     return (
         <div className={classes.postFooterMain}>
             <div className={classes.postFooter}>
-                {/* <Tags tags={post.Tags.length ? post.Tags : []} /> */}
+                <Tags tags={post.tags.length ? post.tags : []} />
                 <div className={classes.postFooter__likes} >
                     {numLikes} likes
                 </div>
