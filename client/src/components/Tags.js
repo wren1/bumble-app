@@ -7,10 +7,10 @@ import Tag from './Tag';
 
 const useStyles = makeStyles((theme) => ({
     postFooter__tags: {
-        width: '100%',
         boxSizing: 'border-box',
         align: 'flex',
-        padding: '3px 10px'
+        padding: '3px 10px',
+        display: 'flex',
     }
 }))
 
@@ -19,7 +19,7 @@ const Tags = ({ tags }) => {
 
     return (
         <div className={classes.postFooter__tags}>
-            {!tags ? null : tags.forEach(tag => <Tag tag={tag} />)}
+            {!tags ? null : tags.map(tag => <Tag tag={tag} />)}
         </div>
     )
 }

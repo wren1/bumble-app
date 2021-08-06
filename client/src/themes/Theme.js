@@ -5,10 +5,12 @@ export const theme = createMuiTheme({
     fontFamily: 'Arial',
     palette: {
         primary: {
-            main: '#FFF259'
+            main: '#FFF259',
+            dark: '#bfaf00'
         },
         secondary: {
-            main: '#404040'
+            main: '#404040',
+            light: '#a3a3a3'
         }
     }
 })

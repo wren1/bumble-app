@@ -10,7 +10,7 @@ import { setCurrentSearch, setCurrentSearchType } from '../store/reducers/curren
 
 const useStyles = makeStyles((theme) => ({
     postFooter__tag: {
-        color: theme.palette.primary.main,
+        color: theme.palette.secondary.light,
         cursor: 'pointer',
         margin: '0px 3px'
     }
@@ -27,7 +27,7 @@ const Tag = ({ tag }) => {
 
     return (
         <div className={classes.postFooter__tag} onClick={handleClick}>
-            { tag }
+            #{ tag }
         </div>
     )
 }
