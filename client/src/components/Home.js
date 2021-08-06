@@ -11,8 +11,7 @@ import PostBlock from './PostBlock'
 import SearchHeader from './SearchHeader';
 
 import { USER_KEY } from '../store/actions/auth';
-import { getFeedPosts } from '../store/actions/post';
-import { getSearchPosts } from '../store/actions/post';
+import { getFeedPosts, getSearchPosts, getTagPosts } from '../store/actions/post';
 import { getUser } from '../store/actions/users';
 
 
@@ -36,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Home = () => {
+    const searchTag = useSelector(state => state.current.tag)
     const query = useSelector(state => state.current.search)
 
     const classes = useStyles(theme);
