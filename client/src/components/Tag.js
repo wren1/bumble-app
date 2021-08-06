@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
 
 
-import { setCurrentSearch, setCurrentSearchType } from '../store/reducers/current';
+import { setCurrentSearch, setCurrentSearchType, setCurrentTag } from '../store/reducers/current';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +22,7 @@ const Tag = ({ tag }) => {
 
     const handleClick = () => {
         dispatch(setCurrentSearchType('tag'))
-        dispatch(setCurrentSearch(tag))
+        dispatch(setCurrentTag(tag))
     }
 
     return (

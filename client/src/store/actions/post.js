@@ -80,15 +80,8 @@ export const getTagPosts = (tag) => async (dispatch, getState) => {
     try {
         const res = await fetch(`/api/search/tags/${tag}`);
         const { results, users } = await res.json();
-        // let posts = {};
-        // for (let post in results) {
-        //     if (results[post].Tags.length) {
-        //         posts[post] = post;
-        //         posts[post].Tags.map(tag => tag.description)
-        //         posts[post].Likes.map(like => like.userId)
-        //     }
-        // }
-        loadUsers(users)
+
+        dispatch(loadUsers(users))
         dispatch(loadPosts(results))
     } catch (e) {
         console.log(e);

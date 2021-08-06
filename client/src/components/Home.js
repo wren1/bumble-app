@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
     const searchTag = useSelector(state => state.current.tag)
-    const query = useSelector(state => state.current.search)
+    const searchQuery = useSelector(state => state.current.search)
 
     const classes = useStyles(theme);
     const dispatch = useDispatch();
@@ -57,13 +57,15 @@ const Home = () => {
     useEffect(() => {
         (async () => {
             await dispatch(getUser(userId))
-            if (query) {
-                await dispatch(getSearchPosts(query))
+            if (searchTag) {
+                await dispatch(getTagPosts(searchTag))
+            } else if (searchQuery) {
+                await dispatch(getSearchPosts(searchQuery))
             } else {
                 await dispatch(getFeedPosts(userId));
             }
         })();
-    }, [query, posts.length])
+    }, [searchQuery, posts.length, searchTag])
 
     if (!currentUser) return null;
 
@@ -72,8 +74,8 @@ const Home = () => {
         <div>
             <NavBar />
             <Container className={classes.mainContainer}>
-                {!query ? <PostBlock className={classes.postBlock} /> :
-                <SearchHeader query={query} />}
+                {!(searchQuery || searchTag) ? <PostBlock className={classes.postBlock} /> :
+                <SearchHeader query={!searchQuery ? searchTag : searchQuery} isTag={!!searchTag} />}
                 <Feed userId={userId} posts={posts} currentUser={currentUser} />
             </Container>
         </div>

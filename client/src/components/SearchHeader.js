@@ -20,12 +20,12 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-const SearchHeader = ({ query }) => {
+const SearchHeader = ({ query, isTag }) => {
     const classes = useStyles()
     return (
         <div className={classes.searchHeader}>
             <div className={classes.searchHeader__content}>
-                "{query}"
+                "{!isTag ? query : `#${query}`}"
             </div>
         </div>
     )

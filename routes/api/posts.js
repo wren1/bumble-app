@@ -16,7 +16,11 @@ router.get('/api/posts/:userId', asyncHandler(async (req, res, next) => {
     const user = await User.findByPk(userId)
     let users = await Follow.findAll({ where: { followerId: userId }, include: User });
     const follows = Object.values(users).map(user => user.followedUserId);
-    let posts = await Post.findAll({where: { userId: [userId, ...follows] }, order: [['updatedAt', 'DESC']], include: [ { model: Tag }, { model: Like } ] });
+    let posts = await Post.findAll({
+        where: { userId: [userId, ...follows] }, 
+        order: [['updatedAt', 'DESC']], 
+        include: [ { model: Tag }, { model: Like } ] 
+    });
     
     users = users.map(user => user.User);
     res.json({ posts: sendPosts(posts), users: [...sendUsers(users), user]});
@@ -86,33 +90,43 @@ router.post('/api/posts/:postId/reblog', requireAuth, asyncHandler(async (req, r
 
 // get all the posts that have the specified tag
 router.get('/api/search/tags/:tag', asyncHandler(async (req, res, next) => {
-    // const tag = req.params.tag;
-    // const tags = await Tag.findAll({ where: { description: tag }, include: Post });
-    // let posts = sendPosts(tags.Posts)
-    // res.json({ results: posts })
-
     const tag = req.params.tag;
-    const posts = await Post.findAll({ 
-        include: [
-            {
-                model: Tag,
-                where: {
-                    description: tag,
-                    postId: Sequelize.col('post.id')
-                }
-            },
-            { model: Tag },
-            { model: Like }
-        ]
-     })
-     const userIds = [];
-     posts.forEach(post => {
-         if (!userIds.includes(post.userId)) {
-             userIds.push(post.userId)
-         }
-     })
-     const users = await User.findAll({ where: { id: userIds } })
+    const tags = await Tag.findAll({ 
+        where: { description: tag }, 
+        include: { model: Post, 
+            include: [
+                { model: Tag },
+                { model: Like },
+                { model: User }
+            ]}
+    });
+    const posts = tags.map(tag => tag.Post)
+    let users = [];
+    posts.forEach(post => users.push(post.User));
     res.json({ results: sendPosts(posts), users: sendUsers(users) })
+
+    // const tag = req.params.tag;
+    // const posts = await Post.findAll({ 
+    //     include: [
+    //         {
+    //             model: Tag,
+    //             where: {
+    //                 description: tag,
+    //                 postId: Sequelize.col('post.id')
+    //             }
+    //         },
+    //         { model: Tag },
+    //         { model: Like }
+    //     ]
+    //  })
+    //  const userIds = [];
+    //  posts.forEach(post => {
+    //      if (!userIds.includes(post.userId)) {
+    //          userIds.push(post.userId)
+    //      }
+    //  })
+    //  const users = await User.findAll({ where: { id: userIds } })
+    // res.json({ results: sendPosts(posts), users: sendUsers(users) })
 }))
 
 // get all the posts that match the search query
