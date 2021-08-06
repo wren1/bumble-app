@@ -68,13 +68,7 @@ export const getSearchPosts = (query) => async (dispatch, getState) => {
         }
         const res = await fetch(searchUrl);
         const { results, users } = await res.json();
-        for (let post in results) {
-            if (results[post].Tags) {
-                results[post].Tags.map(tag => tag.description)
-                results[post].Likes.map(like => like.userId)
-            }
-            delete results[post].User
-        }
+        
         dispatch(loadUsers(users))
         dispatch(loadPosts(results))
     } catch (e) {
