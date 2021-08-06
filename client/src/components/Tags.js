@@ -14,12 +14,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const Tags = ({ tags }) => {
+const Tags = ({ tags, postId }) => {
     const classes = useStyles(theme);
 
     return (
         <div className={classes.postFooter__tags}>
-            {!tags ? null : tags.map(tag => <Tag tag={tag} />)}
+            {!tags ? null : tags.map(tag => <Tag tag={tag} key={`post-${postId}-${tag}`} />)}
         </div>
     )
 }

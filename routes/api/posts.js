@@ -4,6 +4,7 @@ const { Op } = require('sequelize');
 const db = require('../../db/models');
 const { User, Comment, Follow, Like, Post, Reblog, Tag } = db;
 const { requireAuth, getUserToken } = require('../../utils/auth');
+const { sendPosts, sendUsers } = require('../../utils/func');
 
 const asyncHandler = handler => (req, res, next) => handler(req, res, next).catch(next);
 
@@ -17,33 +18,7 @@ router.get('/api/posts/:userId', asyncHandler(async (req, res, next) => {
     let posts = await Post.findAll({where: { userId: [userId, ...follows] }, order: [['updatedAt', 'DESC']], include: [ { model: Tag }, { model: Like } ] });
     
     users = users.map(user => user.User);
-    let allUsers = users.map(user => {
-        return {
-            id: user.id, 
-            username: user.username, 
-            profilePic: user.profilePic, 
-            banner: user.banner, 
-            aboutTitle: user.aboutTitle, 
-            aboutContent: user.aboutContent, 
-            likes: user.Likes, 
-            follows: user.Follows
-        }
-    })
-    let allPosts = posts.map(post => {
-        return {
-            id: post.id,
-            userId: post.userId,
-            type: post.type,
-            title: post.title,
-            content: post.content,
-            imgUrl: post.imgUrl,
-            createdAt: post.createdAt,
-            updatedAt: post.updatedAt,
-            tags: post.Tags.map(tag => tag.description),
-            likes: post.Likes.map(like => like.userId)
-        }
-    })
-    res.json({ posts: allPosts, users: [...allUsers, user]});
+    res.json({ posts: sendPosts(posts), users: [...sendUsers(users), user]});
 }))
 
 // create a new post

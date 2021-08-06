@@ -200,7 +200,7 @@ const PostFooter = ({ post, user, handleDelete, handleLike, isLiked, setIsLiked,
                 <div className={classes.postFooter__likes} >
                     {numLikes} likes
                 </div>
-                <Tags tags={post.tags.length ? post.tags : []} />
+                <Tags tags={post.tags.length ? post.tags : []} postId={post.id} />
                 <div className={classes.postFooter__buttons}>
                     {!(post.userId === userId) ? null :
                     <IconButton className={classes.iconButton} onClick={handleOpen}>
