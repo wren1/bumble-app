@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 
+import { theme } from '../themes/Theme';
+
 const useStyles = makeStyles((theme) => ({
-    editPost__tags: {
+    postModal__tags: {
         
     }
 }))
@@ -14,7 +16,7 @@ const EditTags = () => {
     const classes = useStyles(theme)
 
     return (
-        <Container className={classes.editPost__tags}>
+        <Container className={classes.postModal__tags}>
             
         </Container>
     )

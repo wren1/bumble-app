@@ -11,11 +11,12 @@ import Icon from '@material-ui/core/Icon';
 import Dialog from '@material-ui/core/Dialog';
 
 import EditTags from './EditTags';
-import NewPost from './NewPost';
+import PostModal from './PostModal';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
 import { makeNewPost } from '../store/actions/post';
+
 
 const useStyles = makeStyles((theme) => ({
     makePostContainer: {
@@ -46,23 +47,23 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    makeTextPost: {
-        alignSelf: 'center',
-        justifySelf: 'center',
-        height: '400px',
-        width: '200px'
-    },
-    textInputForm: {
-        height: '100px',
+    // makeTextPost: {
+    //     alignSelf: 'center',
+    //     justifySelf: 'center',
+    //     height: '400px',
+    //     width: '200px'
+    // },
+    // textInputForm: {
+    //     height: '100px',
 
-    },
-    textBoxInput: {
-        height: '20px',
-    },
-    postBlock__button: {
-        position: 'relative',
-        top: '20px'
-    },
+    // },
+    // textBoxInput: {
+    //     height: '20px',
+    // },
+    // postBlock__button: {
+    //     position: 'relative',
+    //     top: '20px'
+    // },
     postBlock__makePostDiv: {
         cursor: 'pointer',
     },
@@ -71,66 +72,67 @@ const useStyles = makeStyles((theme) => ({
         height: '55px',
         width: '55px'
     },
-    postBlock__dialogBox: {
-        width: '550px',
-        height: '450px',
-        padding: '25px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'space-between',
-        justifyContent: 'space-between'
-    },
-    postBlock__textInputArea: {
-        display: 'flex',
-        flexDirection: 'column'
-    },
-    postBlock__dialogBoxButtons: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        margin: '5px 5px 5px 5px',
-        padding: '10px 0px 0px 0px',
-    },
-    postBlock__dialogBoxTitleInput: {
-        height: '75px'
-    }
+    // postBlock__dialogBox: {
+    //     width: '550px',
+    //     height: '450px',
+    //     padding: '25px',
+    //     display: 'flex',
+    //     flexDirection: 'column',
+    //     alignItems: 'space-between',
+    //     justifyContent: 'space-between'
+    // },
+    // postBlock__textInputArea: {
+    //     display: 'flex',
+    //     flexDirection: 'column'
+    // },
+    // postBlock__dialogBoxButtons: {
+    //     display: 'flex',
+    //     justifyContent: 'flex-end',
+    //     margin: '5px 5px 5px 5px',
+    //     padding: '10px 0px 0px 0px',
+    // },
+    // postBlock__dialogBoxTitleInput: {
+    //     height: '75px'
+    // }
 }));
 
 const PostBlock = () => {
+    const dispatch = useDispatch();
+    const classes = useStyles(theme);
     const [displayTextPost, setDisplayTextPost] = useState(false);
     const [content, setContent] = useState('')
     const [title, setTitle] = useState('')
     const [url, setUrl] = useState('')
     const [postType, setPostType] = useState(null)
-    const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
-    const dispatch = useDispatch();
-    const classes = useStyles(theme);
+    // const [modalStyle] = React.useState(getModalStyle);
 
-    function rand() {
-        return Math.round(Math.random() * 20) - 10;
-    }
+    // function rand() {
+    //     return Math.round(Math.random() * 20) - 10;
+    // }
 
-    function getModalStyle() {
-        const top = 50 + rand();
-        const left = 50 + rand();
+    // function getModalStyle() {
+    //     const top = 50 + rand();
+    //     const left = 50 + rand();
 
-        return {
-            top: `${top}%`,
-            left: `${left}%`,
-            transform: `translate(-${top}%, -${left}%)`,
-        };
-    }
+    //     return {
+    //         top: `${top}%`,
+    //         left: `${left}%`,
+    //         transform: `translate(-${top}%, -${left}%)`,
+    //     };
+    // }
     
     
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(makeNewPost(title, content, postType))
-        setContent('')
-        setTitle('')
-        setPostType(null)
-        setOpen(false)
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     dispatch(makeNewPost(title, content, postType))
+    //     setContent('')
+    //     setTitle('')
+    //     setPostType(null)
+    //     setOpen(false)
+    // }
+
     const handleOpen = (postType) => {
         setPostType(postType);
         setOpen(true);
@@ -141,57 +143,57 @@ const PostBlock = () => {
     }
 
 
-    const makePostDiv = () => {
-        if (setOpen) {
-            if (postType === 'text') {
-                return (
-                    <div className={classes.postBlock__textInputArea}>
-                        <TextField className={classes.postBlock__dialogBoxTitleInput} 
-                            placeholder="Title"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                        <TextField className={classes.postBlock__dialogBoxContentInput} 
-                            id="standard-multiline-static"
-                            placeholder="Your content here"
-                            multiline
-                            rows={8}
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)} />
-                    </div>
-                )
-            }
-            if (postType === 'image') {
-                return <div className={classes.postBlock__textInputArea}>
-                        <TextField className={classes.postBlock__dialogBoxTitleInput} 
-                            placeholder="image url"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                        <TextField className={classes.postBlock__dialogBoxContentInput} 
-                            id="standard-multiline-static"
-                            placeholder="Your content here"
-                            multiline
-                            rows={8}
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)} />
-                    </div>
-            }
-            if (postType === 'quote') {
-                return <div className={classes.postBlock__textInputArea}>
-                        <TextField className={classes.postBlock__dialogBoxTitleInput} 
-                            placeholder='"Quote"'
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                        <TextField className={classes.postBlock__dialogBoxContentInput}
-                            placeholder="- Source"
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)} />
-                    </div>
-            }
-        }
-    }
+    // const makePostDiv = () => {
+    //     if (setOpen) {
+    //         if (postType === 'text') {
+    //             return (
+    //                 <div className={classes.postBlock__textInputArea}>
+    //                     <TextField className={classes.postBlock__dialogBoxTitleInput} 
+    //                         placeholder="Title"
+    //                         value={title}
+    //                         onChange={(e) => setTitle(e.target.value)}
+    //                     />
+    //                     <TextField className={classes.postBlock__dialogBoxContentInput} 
+    //                         id="standard-multiline-static"
+    //                         placeholder="Your content here"
+    //                         multiline
+    //                         rows={8}
+    //                         value={content}
+    //                         onChange={(e) => setContent(e.target.value)} />
+    //                 </div>
+    //             )
+    //         }
+    //         if (postType === 'image') {
+    //             return <div className={classes.postBlock__textInputArea}>
+    //                     <TextField className={classes.postBlock__dialogBoxTitleInput} 
+    //                         placeholder="image url"
+    //                         value={title}
+    //                         onChange={(e) => setTitle(e.target.value)}
+    //                     />
+    //                     <TextField className={classes.postBlock__dialogBoxContentInput} 
+    //                         id="standard-multiline-static"
+    //                         placeholder="Your content here"
+    //                         multiline
+    //                         rows={8}
+    //                         value={content}
+    //                         onChange={(e) => setContent(e.target.value)} />
+    //                 </div>
+    //         }
+    //         if (postType === 'quote') {
+    //             return <div className={classes.postBlock__textInputArea}>
+    //                     <TextField className={classes.postBlock__dialogBoxTitleInput} 
+    //                         placeholder='"Quote"'
+    //                         value={title}
+    //                         onChange={(e) => setTitle(e.target.value)}
+    //                     />
+    //                     <TextField className={classes.postBlock__dialogBoxContentInput}
+    //                         placeholder="- Source"
+    //                         value={content}
+    //                         onChange={(e) => setContent(e.target.value)} />
+    //                 </div>
+    //         }
+    //     }
+    // }
 
 
     return (
@@ -220,7 +222,10 @@ const PostBlock = () => {
                     </div>
                 </Grid>
         </Grid>
-        <Dialog open={open} onClose={handleClose} aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description" >
+        <PostModal 
+            displayTextPost={displayTextPost} setDisplayTextPost={setDisplayTextPost} content={content} setContent={setContent} title={title} setTitle={setTitle} url={url} setUrl={setUrl} postType={postType} setPostType={setPostType} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose}
+        />
+        {/* <Dialog open={open} onClose={handleClose} aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description" >
             <form className={classes.postBlock__dialogBox} onSubmit={handleSubmit}>
                 {makePostDiv()}
                 <div className={classes.postBlock__dialogBoxButtons}>
@@ -232,7 +237,7 @@ const PostBlock = () => {
                     </Button>
                 </div>
             </form>
-        </Dialog>
+        </Dialog> */}
         </div>
     )
 }
