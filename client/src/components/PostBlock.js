@@ -10,6 +10,9 @@ import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 import Icon from '@material-ui/core/Icon';
 import Dialog from '@material-ui/core/Dialog';
 
+import EditTags from './EditTags';
+import NewPost from './NewPost';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { theme } from '../themes/Theme';
 import { makeNewPost } from '../store/actions/post';
