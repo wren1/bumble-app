@@ -5,7 +5,7 @@ const { Sequelize } = require('../../db/models');
 const db = require('../../db/models');
 const { User, Comment, Follow, Like, Post, Reblog, Tag } = db;
 const { requireAuth, getUserToken } = require('../../utils/auth');
-const { sendPosts, sendUsers } = require('../../utils/func');
+const { sendPosts, sendPost, sendUsers, sendUser } = require('../../utils/func');
 
 const asyncHandler = handler => (req, res, next) => handler(req, res, next).catch(next);
 
@@ -28,13 +28,16 @@ router.get('/api/posts/:userId', asyncHandler(async (req, res, next) => {
 
 // create a new post
 router.post('/api/posts', asyncHandler(async (req, res, next) => {
-    const { userId, type, title, content, imgUrl } = req.body;
+    const { userId, type, title, content, imgUrl, tags } = req.body;
     // handle errors
+    const makeTags = (postId) => tags.forEach(async (tag) => await Tag.create({ postId, description: tag }))
     if (type === 'image') {
         const post = await Post.create({ userId, type, imgUrl, content });
+        makeTags(post.id);
         res.json({ post })
     } else {
-        const post = await Post.create({ userId, type, title, content });
+        const post = await Post.create({ userId, type, title, content, tags });
+        makeTags(post.id);
         res.json({ post })
     }
 }))
@@ -46,7 +49,7 @@ router.put('/api/posts/:postId', asyncHandler(async (req, res, next) => {
     // handle errors
     const updatedPost = await Post.findByPk(id);
     await updatedPost.update({ userId, type, title, content, imgUrl });
-    res.json({ post: updatedPost })
+    res.json({ post: sendPost(updatedPost) })
 }))
 
 // delete a post, if the current user is the one that posted the post
@@ -85,7 +88,7 @@ router.post('/api/posts/:postId/reblog', requireAuth, asyncHandler(async (req, r
     const { userId } = req.body;
     const post = await Post.findByPk(postId);
     await Reblog.create({ postId, userId })
-    res.json({ post })
+    res.json({ post: sendPost(post) })
 }))
 
 // get all the posts that have the specified tag
@@ -155,7 +158,7 @@ router.post('/api/posts/:postId/tags/:tag', asyncHandler(async (req, res, next) 
     const tag = req.params.tag;
     const newTag = await Tag.create({ postId, description: tag })
     const post = await Post.findByPk(postId, { include: Tag })
-    res.json({ post })
+    res.json({ post: sendPost(post) })
 }))
 
 // delete tag from post
@@ -165,7 +168,7 @@ router.delete('/api/posts/:postId/tags/:tag', asyncHandler(async (req, res, next
     const post = await Post.findByPk(postId)
     const tag = Tag.findOne({ where: { description: tagContent, postId } })
     await tag.destroy();
-    res.json({ post })
+    res.json({ post: sendPost(post) })
 }))
 
 module.exports = router;

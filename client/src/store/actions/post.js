@@ -44,12 +44,7 @@ export const getFeedPosts = (userId) => async (dispatch, getState) => {
             }
         })
         const { posts, users } = await res.json();
-        for (let post in posts) {
-            if (posts[post].Tags) {
-                posts[post].Tags.map(tag => tag.description)
-                posts[post].Likes.map(like => like.userId)
-            }
-        }
+        
         dispatch(loadPosts(posts));
         dispatch(loadUsers(users));
     } catch (e) {
@@ -96,17 +91,12 @@ export const getUserPosts = (userId) => async (dispatch, getState) => {
         }
     })
     const { user, posts } = await res.json();
-    for (let post in posts) {
-        if (posts[post].Tags) {
-            posts[post].Tags.map(tag => tag.description)
-            posts[post].Likes.map(like => like.userId)
-        }
-    }
+    
     dispatch(loadOneUser(user));
     dispatch(loadPosts(posts))
 }
 
-export const makeNewPost = (title, content, type) => async (dispatch, getState) => {
+export const makeNewPost = (title, content, type, tags) => async (dispatch, getState) => {
     const { authentication: { token } } = getState();
     let imgUrl;
     if (type === 'image') {
@@ -120,9 +110,12 @@ export const makeNewPost = (title, content, type) => async (dispatch, getState) 
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({title, content, userId, type, imgUrl})
+            body: JSON.stringify({title, content, userId, type, imgUrl, tags})
         });
         const { post } = await res.json();
+        post.likes = [];
+        post.tags = tags;
+        console.log(post)
         dispatch(newPost(post))
     } catch (e) {
         console.log(e);
@@ -179,12 +172,7 @@ export const getLikedPosts = (userId) => async (dispatch, getState) => {
         });
     if (res.ok) {
         const { posts } = await res.json();
-        for (let post in posts) {
-            if (posts[post].Tags) {
-                posts[post].Tags.map(tag => tag.description)
-                posts[post].Likes.map(like => like.userId)
-            }
-        }
+        
         dispatch(loadPosts(posts))
     } else {
         console.error(res)

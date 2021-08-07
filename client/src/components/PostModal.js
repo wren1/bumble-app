@@ -66,9 +66,11 @@ const PostModal = ({ displayTextPost, setDisplayTextPost, content, setContent, t
     const dispatch = useDispatch();
     const classes = useStyles(theme)
 
+    const [tags, setTags] = useState([])
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(makeNewPost(title, content, postType))
+        dispatch(makeNewPost(title, content, postType, tags))
         setContent('')
         setTitle('')
         setPostType(null)
