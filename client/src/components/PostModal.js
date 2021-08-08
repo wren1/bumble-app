@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import TextFieldsIcon from '@material-ui/icons/TextFields';
-import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
-import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
-import Icon from '@material-ui/core/Icon';
 import Dialog from '@material-ui/core/Dialog';
 
 import EditTags from './EditTags';
@@ -62,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const PostModal = ({ displayTextPost, setDisplayTextPost, content, setContent, title, setTitle, url, setUrl, postType, setPostType, open, setOpen, handleOpen, handleClose }) => {
+const PostModal = ({ content, setContent, title, setTitle, postType, setPostType, open, setOpen, handleClose }) => {
     const dispatch = useDispatch();
     const classes = useStyles(theme)
 
