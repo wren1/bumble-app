@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
     loginForm__main: {
         position: 'relative',
         width: '100%',
-        height: '100%',
         top: '90px',
         display: 'flex',
         alignContent: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: '64px'
     },
     loginForm__container: {
         width: '500px',

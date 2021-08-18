@@ -16,7 +16,7 @@ import { setCurrentSearch, setCurrentSearchType } from '../store/reducers/curren
 const useStyles = makeStyles((theme) => ({
     navbar: {
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     navbar__logoAndSearch: {
         display: 'flex',

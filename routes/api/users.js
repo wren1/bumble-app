@@ -4,6 +4,7 @@ const router = express.Router();
 const db = require('../../db/models');
 const { User, Post, Tag, Comment, Like, Follow, Reblog } = db;
 const { getUserToken, requireAuth } = require('../../utils/auth');
+const { sendPosts, sendPost, sendUsers, sendUser } = require('../../utils/func');
 
 const asyncHandler = handler => (req, res, next) => handler(req, res, next).catch(next);
 
@@ -78,7 +79,7 @@ router.get('/api/users/:userId/posts', asyncHandler(async (req, res, next) => {
     const user = await User.findByPk(userId);
     const { username, profilePic, banner, aboutTitle, aboutContent } = user;
     const posts = await Post.findAll({ where: { userId }, order: [['updatedAt', 'DESC']], include: [ { model: Tag }, { model: Like } ] })
-    res.json({ user, posts })
+    res.json({ user, posts: sendPosts(posts) })
 }))
 
 // follow a user

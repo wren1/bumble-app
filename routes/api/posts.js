@@ -57,6 +57,11 @@ router.delete('/api/posts/:postId', asyncHandler(async (req, res, next) => {
     let { userId } = req.body;
     const postId = parseInt(req.params.postId, 10);
     userId = parseInt(userId);
+    Tag.destroy({
+        where: {
+            postId
+        }
+    })
     const post = await Post.findByPk(postId);
     if (post.userId === userId) {
         await post.destroy();

@@ -125,6 +125,7 @@ export const makeNewPost = (title, content, type, tags) => async (dispatch, getS
 export const removePost = (post) => async (dispatch, getState) => {
     const { authentication: { token } } = getState();
     const userId = window.localStorage.getItem(USER_KEY)
+    console.log(post, userId)
     const res = await fetch(`/api/posts/${post.id}`, {
             method: 'DELETE',
             headers: {
