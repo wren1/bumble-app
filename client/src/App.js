@@ -19,10 +19,6 @@ const App = ({ needLogin, loadToken }) => {
   const authenticated = useSelector(state => !!state.authentication.token)
   const [loaded, setLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   loadToken()
-  // }, []);
-
   useEffect(() => {
     (async() => {
       await loadToken();
@@ -33,8 +29,6 @@ const App = ({ needLogin, loadToken }) => {
   if (!loaded) {
     return null;
   }
-
-
 
   return (
     <CssBaseline>

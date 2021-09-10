@@ -1,15 +1,10 @@
-
-import { baseUrl } from './configUrl';
-import { USER_KEY } from './auth';
 import { loadPosts, editPost } from './post';
-
 
 
 export const makeNewTag = (postId, tag) => async (dispatch, getState) => {
     const { authentication: { token } } = getState();
     const { posts } = getState();
     try {
-        const userId = window.localStorage.getItem(USER_KEY);
         const res = await fetch(`/api/posts/${postId}/tags/${tag}`, {
             method: 'POST',
             headers: {
@@ -29,7 +24,6 @@ export const makeNewTag = (postId, tag) => async (dispatch, getState) => {
 export const removeTag = (postId, tag) => async (dispatch, getState) => {
     const { authentication: { token } } = getState();
     const { posts } = getState();
-    const userId = window.localStorage.getItem(USER_KEY)
     const res = await fetch(`/api/posts/${postId}/tags/${tag}`, {
             method: 'DELETE',
             headers: {
